@@ -10,7 +10,7 @@ public class Table {
 		return w;
 	}
 	public static Token installNum(int num) {
-		Number n = new Number(num);
+		IntegerNumber n = new IntegerNumber(num);
 		hm.put(num+"", n);
 		return n;
 	}

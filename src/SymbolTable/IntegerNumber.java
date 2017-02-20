@@ -1,12 +1,12 @@
 package SymbolTable;
 
-public class Number extends Token {
+public class IntegerNumber extends Number {
 	private int value;
-	public Number(int val) {
-		super(TokenNameConstant.NUMBER);
+	public IntegerNumber(int val) {
+		super(TokenNameConstant.INTEGERNUMBER);
 		value=val;
 	}
-	public int getValue() {
+	public Integer getValue() {
 		return value;
 	}
 }
