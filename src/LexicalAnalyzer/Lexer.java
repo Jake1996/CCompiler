@@ -13,7 +13,7 @@ public class Lexer {
 		line = 1;
 	}
 	public static void main(String args[]) {
-		Lexer l = new Lexer("this s hlkfsf \n _n_rw8 45 87..5e2_f y");
+		Lexer l = new Lexer("\"this\"");
 		String s;
 		while((s=l.getNextToken())!=null) {
 			System.out.println(s);
@@ -261,10 +261,30 @@ public class Lexer {
 			}
 			//for string literals
 			else if(arr[lexemeEnd]=='"') {
-				return "";
+				StringBuilder s = new StringBuilder();
+				lexemeEnd++;
+				s.append('"');
+				while(lexemeEnd<arr.length&&arr[lexemeEnd]!='"') {				
+					s.append(arr[lexemeEnd]);
+					lexemeEnd++;
+				}
+				lexemeEnd++;
+				lexemeBegin=lexemeEnd;
+				s.append('"');
+				return s.toString();
 			}
 			else if(arr[lexemeEnd]=='\'') {
-				return "";
+				StringBuilder s = new StringBuilder();
+				lexemeEnd++;
+				s.append('\'');
+				while(lexemeEnd<arr.length&&arr[lexemeEnd]!='\'') {				
+					s.append(arr[lexemeEnd]);
+					lexemeEnd++;
+				}
+				lexemeEnd++;
+				lexemeBegin=lexemeEnd;
+				s.append('\'');
+				return s.toString();
 			}
 			
 		}

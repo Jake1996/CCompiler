@@ -1,4 +1,4 @@
-package LexicalAnalyzer;
+package SymbolTable;
 
 public class TokenNameConstant {
 	public static int KEYWORD = 1;
