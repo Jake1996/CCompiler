@@ -8,5 +8,6 @@ public class TokenNameConstant {
 	public static int INTEGERNUMBER = 5;
 	public static int REALNUMBER = 6;
 	public static int STRINGLITERAL = 7;
+	public static int CHARACTERLITERAL = 8;
 	
 }
