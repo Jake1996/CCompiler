@@ -5,6 +5,8 @@ public class TokenNameConstant {
 	public static int BRACKET = 2;
 	public static int IDENTIFIER = 3;
 	public static int OPERATOR = 4;
-	public static int NUMBER = 5;
+	public static int INTEGERNUMBER = 5;
+	public static int REALNUMBER = 6;
+	public static int STRINGLITERAL = 7;
 	
 }
