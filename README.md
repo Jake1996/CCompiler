@@ -5,11 +5,12 @@ Compiler design mini project.
 Our mini compiler will work on while loops in C.
 
 ## Grammar for the language :
-stmt -> while ( bool ) stmt
+```
+stmt     -> while ( bool ) stmt
 
-      | break ;
+           | break ;
       
-      | {stmt}
+           | {stmt}
 
 bool     -> bool||join | join
 
@@ -25,4 +26,5 @@ term     -> term * unary | term / unary | unary
 
 unary    -> !unary | ++unary | --unary | factor
 
-factor    -> ( bool ) | num | real | true | false
+factor   -> ( bool ) | num | real | true | false
+```
