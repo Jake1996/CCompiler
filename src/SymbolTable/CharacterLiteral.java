@@ -6,4 +6,8 @@ public class CharacterLiteral extends Token {
 		super(TokenNameConstant.CHARACTERLITERAL);
 		value=c;
 	}
+	@Override
+	public String toString() {
+		return "< CharacterLiteral , " +value+ " >";
+	}
 }
