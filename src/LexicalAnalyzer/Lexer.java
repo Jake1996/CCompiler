@@ -18,7 +18,52 @@ public class Lexer {
 	}
 	
 	public void initialize()  {
-		Table.installToken("", new Token(TokenNameConstant.));
+		Table.installToken(";", new Token(TokenNameConstant.SEMICOLON));
+		
+		//reserved words
+		Table.installToken("while", new Token(TokenNameConstant.WHILE));
+		Table.installToken("printf", new Token(TokenNameConstant.PRINT));
+		Table.installToken("scanf", new Token(TokenNameConstant.SCAN));
+		Table.installToken("break", new Token(TokenNameConstant.BREAK));
+		Table.installToken("continue", new Token(TokenNameConstant.CONTINUE));
+		Table.installToken("return", new Token(TokenNameConstant.RETURN));
+		Table.installToken("int", new Token(TokenNameConstant.INT));
+		Table.installToken("float", new Token(TokenNameConstant.FLOAT));
+		Table.installToken("double", new Token(TokenNameConstant.DOUBLE));
+		Table.installToken("char", new Token(TokenNameConstant.CHAR));
+
+		//brackets
+		Table.installToken("{", new Token(TokenNameConstant.OPENFLOWER));
+		Table.installToken("}", new Token(TokenNameConstant.CLOSEFLOWER));
+		Table.installToken("(", new Token(TokenNameConstant.OPENPARAN));
+		Table.installToken(")", new Token(TokenNameConstant.CLOSEPARAN));
+		Table.installToken("[", new Token(TokenNameConstant.OPENSQUARE));
+		Table.installToken("]", new Token(TokenNameConstant.CLOSESQUARE));
+		
+		//operators
+		Table.installToken("+", new Token(TokenNameConstant.ADD));
+		Table.installToken("+=", new Token(TokenNameConstant.ADDEQUAL));
+		Table.installToken("++", new Token(TokenNameConstant.INCREMENT));
+		Table.installToken("-", new Token(TokenNameConstant.SUBTRACT));
+		Table.installToken("-=", new Token(TokenNameConstant.SUBTRACTEQUAL));
+		Table.installToken("--", new Token(TokenNameConstant.DECREMENT));
+		Table.installToken("*", new Token(TokenNameConstant.MULTIPLY));
+		Table.installToken("*=", new Token(TokenNameConstant.MODULUSEQUAL));
+		Table.installToken("/", new Token(TokenNameConstant.DIVIDE));
+		Table.installToken("/=", new Token(TokenNameConstant.DIVIDEEQUAL));
+		Table.installToken("%", new Token(TokenNameConstant.MODULUS));
+		Table.installToken("%=", new Token(TokenNameConstant.MODULUSEQUAL));
+		Table.installToken(">", new Token(TokenNameConstant.GT));
+		Table.installToken(">=", new Token(TokenNameConstant.GE));
+		Table.installToken("<", new Token(TokenNameConstant.LT));
+		Table.installToken("<=", new Token(TokenNameConstant.LE));
+		Table.installToken("==", new Token(TokenNameConstant.EQ));
+		Table.installToken("=", new Token(TokenNameConstant.ASSIGN));
+		Table.installToken("!=", new Token(TokenNameConstant.NE));
+		Table.installToken("!", new Token(TokenNameConstant.NOT));
+		Table.installToken("&&", new Token(TokenNameConstant.AND));
+		Table.installToken("||", new Token(TokenNameConstant.OR));
+	
 	}
 	
 	public Token getNextToken() {
