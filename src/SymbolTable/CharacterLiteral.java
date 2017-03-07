@@ -1,8 +1,8 @@
 package SymbolTable;
 
 public class CharacterLiteral extends Token {
-	char value;
-	public CharacterLiteral(char c) {
+	String value;
+	public CharacterLiteral(String c) {
 		super(TokenNameConstant.CHARACTERLITERAL);
 		value=c;
 	}
