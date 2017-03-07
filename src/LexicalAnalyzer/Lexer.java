@@ -15,14 +15,7 @@ public class Lexer {
 		lexemeEnd = 0;
 		line = 1;
 	}
-	public static void main(String args[]) {
-		Lexer l = new Lexer("\"this\"");
-		Token s;
-		while((s=l.getNextToken())!=null) {
-			System.out.println(s);
-		}
-
-	}
+	
 	public Token getNextToken() {
 		try {
 			while(true) {
