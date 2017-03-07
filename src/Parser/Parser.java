@@ -10,6 +10,6 @@ public class Parser {
 		while((s=l.getNextToken())!=null) {
 			System.out.println(s);
 		}
-
+		
 	}
 }
