@@ -11,6 +11,9 @@ public class Table {
 		}
 		return hm.get(word);
 	}
+	public static void installToken(String s,Token t) {
+		hm.put(s, t);
+	}
 	public static Token installNum(int num) {
 		if(!hm.containsKey(num+"")) {
 			IntegerNumber n = new IntegerNumber(num);

@@ -14,6 +14,11 @@ public class Lexer {
 		lexemeBegin = 0;
 		lexemeEnd = 0;
 		line = 1;
+		initialize();
+	}
+	
+	public void initialize()  {
+		Table.installToken("", new Token(TokenNameConstant.));
 	}
 	
 	public Token getNextToken() {
@@ -282,6 +287,16 @@ public class Lexer {
 					lexemeBegin=lexemeEnd;
 					return Table.getToken("%");
 				}
+			}
+			else if(arr[lexemeEnd]=='&') {
+				lexemeEnd+=2;
+				lexemeBegin = lexemeEnd;
+				return Table.getToken("&&");
+			}
+			else if(arr[lexemeEnd]=='|') {
+				lexemeEnd+=2;
+				lexemeBegin = lexemeEnd;
+				return Table.getToken("||");
 			}
 			//for string literals
 			else if(arr[lexemeEnd]=='"') {//String Literal
