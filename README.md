@@ -16,17 +16,17 @@ stmt     ->  while ( bool ) stmt
            
 loc      -> loc[bool] | id
 
-bool     -> bool||join | join
+bool     -> join||bool | join
 
-join     -> join && equality | equality
+join     -> equality && join | equality
 
-equality -> equality == rel | equality ! = rel | rel
+equality -> rel == equality | rel ! = equality | rel
 
 rel      -> expr < expr | expr<= expr | expr>= expr | expr > expr | expr
 
-expr     -> expr + term | expr - term | term
+expr     -> term + expr | term - expr | term
 
-term     -> term * unary | term / unary | unary
+term     -> unary * term | unary / term | unary
 
 unary    -> !unary | ++unary | --unary | factor
 
