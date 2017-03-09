@@ -9,4 +9,8 @@ public class RealNumber extends Number {
 	public Double getValue() {
 		return value;
 	}
+	@Override
+	public String toString() {
+		return "< Real , " +value+ " >";
+	}
 }

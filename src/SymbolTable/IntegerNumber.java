@@ -9,4 +9,8 @@ public class IntegerNumber extends Number {
 	public Integer getValue() {
 		return value;
 	}
+	@Override
+	public String toString() {
+		return "< Integer , " +value+ " >";
+	}
 }

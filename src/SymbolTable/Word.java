@@ -9,4 +9,8 @@ public class Word extends Token {
 	public String getLexeme() {
 		return lexeme;
 	}
+	@Override
+	public String toString() {
+		return "< Identifier , " +lexeme+ " >";
+	}
 }

@@ -1,6 +1,9 @@
 package LexicalAnalyzer;
+
 import Exceptions.NumberFormatException;
 import Helper.*;
+import SymbolTable.*;
+
 public class Lexer {
 	private char arr[];
 	private int lexemeBegin;
@@ -11,14 +14,56 @@ public class Lexer {
 		lexemeBegin = 0;
 		lexemeEnd = 0;
 		line = 1;
+		initialize();
 	}
-	public static void main(String args[]) {
-		Lexer l = new Lexer("\"this\"");
-		String s;
-		while((s=l.getNextToken())!=null) {
-			System.out.println(s);
-		}
+	
+	public void initialize()  {
+		Table.installToken(";", new Token(TokenNameConstant.SEMICOLON));
 		
+		//reserved words
+		Table.installToken("while", new Token(TokenNameConstant.WHILE));
+		Table.installToken("printf", new Token(TokenNameConstant.PRINT));
+		Table.installToken("scanf", new Token(TokenNameConstant.SCAN));
+		Table.installToken("break", new Token(TokenNameConstant.BREAK));
+		Table.installToken("continue", new Token(TokenNameConstant.CONTINUE));
+		Table.installToken("return", new Token(TokenNameConstant.RETURN));
+		Table.installToken("int", new Token(TokenNameConstant.INT));
+		Table.installToken("float", new Token(TokenNameConstant.FLOAT));
+		Table.installToken("double", new Token(TokenNameConstant.DOUBLE));
+		Table.installToken("char", new Token(TokenNameConstant.CHAR));
+
+		//brackets
+		Table.installToken("{", new Token(TokenNameConstant.OPENFLOWER));
+		Table.installToken("}", new Token(TokenNameConstant.CLOSEFLOWER));
+		Table.installToken("(", new Token(TokenNameConstant.OPENPARAN));
+		Table.installToken(")", new Token(TokenNameConstant.CLOSEPARAN));
+		Table.installToken("[", new Token(TokenNameConstant.OPENSQUARE));
+		Table.installToken("]", new Token(TokenNameConstant.CLOSESQUARE));
+		
+		//operators
+		Table.installToken("+", new Token(TokenNameConstant.ADD));
+		Table.installToken("+=", new Token(TokenNameConstant.ADDEQUAL));
+		Table.installToken("++", new Token(TokenNameConstant.INCREMENT));
+		Table.installToken("-", new Token(TokenNameConstant.SUBTRACT));
+		Table.installToken("-=", new Token(TokenNameConstant.SUBTRACTEQUAL));
+		Table.installToken("--", new Token(TokenNameConstant.DECREMENT));
+		Table.installToken("*", new Token(TokenNameConstant.MULTIPLY));
+		Table.installToken("*=", new Token(TokenNameConstant.MODULUSEQUAL));
+		Table.installToken("/", new Token(TokenNameConstant.DIVIDE));
+		Table.installToken("/=", new Token(TokenNameConstant.DIVIDEEQUAL));
+		Table.installToken("%", new Token(TokenNameConstant.MODULUS));
+		Table.installToken("%=", new Token(TokenNameConstant.MODULUSEQUAL));
+		Table.installToken(">", new Token(TokenNameConstant.GT));
+		Table.installToken(">=", new Token(TokenNameConstant.GE));
+		Table.installToken("<", new Token(TokenNameConstant.LT));
+		Table.installToken("<=", new Token(TokenNameConstant.LE));
+		Table.installToken("==", new Token(TokenNameConstant.EQ));
+		Table.installToken("=", new Token(TokenNameConstant.ASSIGN));
+		Table.installToken("!=", new Token(TokenNameConstant.NE));
+		Table.installToken("!", new Token(TokenNameConstant.NOT));
+		Table.installToken("&&", new Token(TokenNameConstant.AND));
+		Table.installToken("||", new Token(TokenNameConstant.OR));
+	
 	}
 	public Token getNextToken() {
 		try {
@@ -65,7 +110,7 @@ public class Lexer {
 				lexemeEnd++;
 			}
 			lexemeBegin = lexemeEnd;
-			return s.toString();
+			return Table.installId(s.toString());
 		}
 		else if(Character.isDigit(arr[lexemeBegin])) { //number
 			StringBuilder s = new StringBuilder();
@@ -82,7 +127,14 @@ public class Lexer {
 					}
 					else {
 						lexemeBegin=lexemeEnd;
-						return s.toString();
+						try {
+							int num = Integer.parseInt(s.toString());
+							return Table.installNum(num);
+						}
+						catch (Exception e) {
+							double num = Double.parseDouble(s.toString());
+							return Table.installReal(num);
+						}
 					}
 					break;
 				case 1:
@@ -100,7 +152,14 @@ public class Lexer {
 					}
 					else {
 						lexemeBegin=lexemeEnd;
-						return s.toString();
+						try {
+							int num = Integer.parseInt(s.toString());
+							return Table.installNum(num);
+						}
+						catch (Exception e) {
+							double num = Double.parseDouble(s.toString());
+							return Table.installReal(num);
+						}
 					}
 					break;
 				case 3:
@@ -126,141 +185,165 @@ public class Lexer {
 					if(Character.isDigit(arr[lexemeEnd])) {}
 					else {
 						lexemeBegin=lexemeEnd;
-						return s.toString();
+						try {
+							int num = Integer.parseInt(s.toString());
+							return Table.installNum(num);
+						}
+						catch (Exception e) {
+							double num = Double.parseDouble(s.toString());
+							return Table.installReal(num);
+						}
 					}
 					break;
 				}
 				s.append(arr[lexemeEnd]);
 				lexemeEnd++;
 			}
-			return s.toString();
+			try {
+				int num = Integer.parseInt(s.toString());
+				return Table.installNum(num);
+			}
+			catch (Exception e) {
+				double num = Double.parseDouble(s.toString());
+				return Table.installReal(num);
+			}
 		}
 		else {  //special character
 			if(arr[lexemeEnd]=='('||arr[lexemeEnd]==')'||arr[lexemeEnd]=='{'||arr[lexemeEnd]=='}'
 					||arr[lexemeEnd]=='['||arr[lexemeEnd]==']'||arr[lexemeEnd]==';') {
 				lexemeEnd++;
 				lexemeBegin = lexemeEnd;
-				return arr[lexemeEnd-1]+"";
+				return Table.getToken(arr[lexemeEnd-1]+"");
 			}
 			else if(arr[lexemeEnd]=='<') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "<=";
+					return Table.getToken("<=");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "<";
+					return Table.getToken("<");
 				}
 			}
 			else if(arr[lexemeEnd]=='>') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return ">=";
+					return Table.getToken(">=");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return ">";
+					return Table.getToken(">");
 				}
 			}
 			else if(arr[lexemeEnd]=='!') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "!=";
+					return Table.getToken("!=");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "!";
+					return Table.getToken("!");
 				}
 			}
 			else if(arr[lexemeEnd]=='=') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "==";
+					return Table.getToken("==");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "=";
+					return Table.getToken("=");
 				}
 			}
 			else if(arr[lexemeEnd]=='+') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "+=";
+					return Table.getToken("+=");
 				}
 				else if(arr[lexemeEnd+1]=='+') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "++";
+					return Table.getToken("++");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "+";
+					return Table.getToken("+");
 				}
 			}
 			else if(arr[lexemeEnd]=='-') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "-=";
+					return Table.getToken("-=");
 				}
 				else if(arr[lexemeEnd+1]=='-') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "--";
+					return Table.getToken("--");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "-";
+					return Table.getToken("-");
 				}
 			}
 			else if(arr[lexemeEnd]=='*') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "*=";
+					return Table.getToken("*=");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "*";
+					return Table.getToken("*");
 				}
 			}else if(arr[lexemeEnd]=='/') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "/=";
+					return Table.getToken("/=");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "/";
+					return Table.getToken("/");
 				}
 			}
 			else if(arr[lexemeEnd]=='%') {
 				if(arr[lexemeEnd+1]=='=') {
 					lexemeEnd+=2;
 					lexemeBegin = lexemeEnd;
-					return "%=";
+					return Table.getToken("%=");
 				}
 				else {
 					lexemeEnd++;
 					lexemeBegin=lexemeEnd;
-					return "%";
+					return Table.getToken("%");
 				}
 			}
+			else if(arr[lexemeEnd]=='&') {
+				lexemeEnd+=2;
+				lexemeBegin = lexemeEnd;
+				return Table.getToken("&&");
+			}
+			else if(arr[lexemeEnd]=='|') {
+				lexemeEnd+=2;
+				lexemeBegin = lexemeEnd;
+				return Table.getToken("||");
+			}
 			//for string literals
-			else if(arr[lexemeEnd]=='"') {
+			else if(arr[lexemeEnd]=='"') {//String Literal
 				StringBuilder s = new StringBuilder();
 				lexemeEnd++;
 				s.append('"');
@@ -271,9 +354,9 @@ public class Lexer {
 				lexemeEnd++;
 				lexemeBegin=lexemeEnd;
 				s.append('"');
-				return s.toString();
+				return Table.installStringLiteral(s.toString());
 			}
-			else if(arr[lexemeEnd]=='\'') {
+			else if(arr[lexemeEnd]=='\'') {//Character Literal
 				StringBuilder s = new StringBuilder();
 				lexemeEnd++;
 				s.append('\'');
@@ -284,9 +367,9 @@ public class Lexer {
 				lexemeEnd++;
 				lexemeBegin=lexemeEnd;
 				s.append('\'');
-				return s.toString();
+				return Table.installCharacter(s.toString());
 			}
-			
+
 		}
 		return null;
 	}
