@@ -14,21 +14,29 @@ stmt     ->  while ( bool ) stmt
            
            | loc = bool;
            
-loc      -> loc[bool] | id
+loc      -> id locdash
 
-bool     -> join||bool | join
+locdash  -> [bool]locdash | epsilon
 
-join     -> equality && join | equality
+bool     -> join booldash
+booldash -> ||bool | epsilon
 
-equality -> rel == equality | rel ! = equality | rel
+join     -> equality joindash
+joindash -> && join | epsilon
 
-rel      -> expr < expr | expr<= expr | expr>= expr | expr > expr | expr
+equality -> rel equalitydash
+equalitydash -> == equality | ! = equality | epsilon
 
-expr     -> term + expr | term - expr | term
+rel      -> expr reldash
+reldash  -> < expr | <= expr | >= expr | > expr | epsilon
 
-term     -> unary * term | unary / term | unary
+expr     -> term exprdash
+exprdash -> + expr | - expr | epsilon
+
+term     -> unary termdash
+termdash -> * term | / term | epsilon
 
 unary    -> !unary | ++unary | --unary | factor
 
-factor   -> ( bool ) | num | real | true | false
+factor   -> ( bool ) | num | real | true | false | loc
 ```
