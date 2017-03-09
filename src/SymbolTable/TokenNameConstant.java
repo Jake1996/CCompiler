@@ -58,5 +58,50 @@ public class TokenNameConstant {
 	public static int NOT = 420;
 	public static int AND = 421;
 	public static int OR = 422;
-	
+	public static String tokenName(int token) {
+		
+		if(token==WHILE)return "while";
+		if(token==PRINT)return "printf";
+		if(token==SCAN)return "scanf";
+		if(token==BREAK)return "break"; 
+		if(token==CONTINUE)return "continue"; 
+		if(token==RETURN)return "return"; 
+		if(token==INT)return "int"; 
+		if(token==FLOAT)return "float"; 
+		if(token==DOUBLE)return "double"; 
+		if(token==CHAR)return "char"; 
+
+		//brackets
+		if(token==OPENFLOWER)return "{"; 
+		if(token==CLOSEFLOWER)return "}"; 
+		if(token==OPENPARAN)return "("; 
+		if(token==CLOSEPARAN)return ")"; 
+		if(token==OPENSQUARE)return "["; 
+		if(token==CLOSESQUARE)return "]"; 
+		
+		//operators
+		if(token==ADD)return "+"; 
+		if(token==ADDEQUAL)return "+="; 
+		if(token==INCREMENT)return "++"; 
+		if(token==SUBTRACT)return "-"; 
+		if(token==SUBTRACTEQUAL)return "-="; 
+		if(token==DECREMENT)return "--"; 
+		if(token==MULTIPLY)return "*"; 
+		if(token==MODULUSEQUAL)return "*="; 
+		if(token==DIVIDE)return "/"; 
+		if(token==DIVIDEEQUAL)return "/="; 
+		if(token==MODULUS)return "%"; 
+		if(token==MODULUSEQUAL)return "%="; 
+		if(token==GT)return ">"; 
+		if(token==GE)return ">="; 
+		if(token==LT)return "<"; 
+		if(token==LE)return "<="; 
+		if(token==EQ)return "=="; 
+		if(token==ASSIGN)return "="; 
+		if(token==NE)return "!="; 
+		if(token==NOT)return "!"; 
+		if(token==AND)return "&&"; 
+		if(token==OR)return "||"; 
+		return "";
+	}
 }
