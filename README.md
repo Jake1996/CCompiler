@@ -6,6 +6,8 @@ Our mini compiler will work on while loops in C.
 
 ## Grammar for the language :
 ```
+p        -> stmt
+
 stmt     ->  while ( bool ) stmt
 
            | break ;
@@ -15,7 +17,6 @@ stmt     ->  while ( bool ) stmt
            | loc = bool;
            
 loc      -> id locdash
-
 locdash  -> [bool]locdash | epsilon
 
 bool     -> join booldash
