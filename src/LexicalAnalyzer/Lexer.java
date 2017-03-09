@@ -20,7 +20,7 @@ public class Lexer {
 		}
 		
 	}
-	public String getNextToken() {
+	public Token getNextToken() {
 		try {
 			while(true) {
 				if(arr[lexemeBegin]=='/') {
