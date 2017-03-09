@@ -12,8 +12,5 @@ public class Parser {
 		}
 		
 	}
-	static class stmt {
-		
-	}
 	
 }
