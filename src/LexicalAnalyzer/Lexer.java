@@ -65,7 +65,6 @@ public class Lexer {
 		Table.installToken("||", new Token(TokenNameConstant.OR));
 	
 	}
-	
 	public Token getNextToken() {
 		try {
 			while(true) {

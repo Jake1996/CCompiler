@@ -6,25 +6,38 @@ Our mini compiler will work on while loops in C.
 
 ## Grammar for the language :
 ```
-stmt     -> while ( bool ) stmt
+p        -> stmt
+
+stmt     ->  while ( bool ) stmt
 
            | break ;
       
            | {stmt}
+           
+           | loc = bool;
+           
+loc      -> id locdash
+locdash  -> [bool]locdash | epsilon
 
-bool     -> bool||join | join
+bool     -> join booldash
+booldash -> ||bool | epsilon
 
-join     -> join && equality | equality
+join     -> equality joindash
+joindash -> && join | epsilon
 
-equality -> equality == rel | equality ! = rel | rel
+equality -> rel equalitydash
+equalitydash -> == equality | ! = equality | epsilon
 
-rel      -> expr < expr | expr<= expr | expr>= expr | expr > expr | expr
+rel      -> expr reldash
+reldash  -> < expr | <= expr | >= expr | > expr | epsilon
 
-expr     -> expr + term | expr - term | term
+expr     -> term exprdash
+exprdash -> + expr | - expr | epsilon
 
-term     -> term * unary | term / unary | unary
+term     -> unary termdash
+termdash -> * term | / term | epsilon
 
 unary    -> !unary | ++unary | --unary | factor
 
-factor   -> ( bool ) | num | real | true | false
+factor   -> ( bool ) | num | real | true | false | loc
 ```
