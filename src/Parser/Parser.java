@@ -16,7 +16,7 @@ public class Parser {
 	}
 	public Parser(String program) {
 		lex = new Lexer(program);
-		String output = new stmts().code;
+		String output = new stmts(null).code;
 		System.out.println(output);
 	}
 	

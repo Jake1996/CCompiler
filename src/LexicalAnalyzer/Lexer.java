@@ -16,7 +16,9 @@ public class Lexer {
 		line = 1;
 		initialize();
 	}
-	
+	public int getLineNo() {
+		return line;
+	}
 	public void initialize()  {
 		Table.installToken(";", new Token(TokenNameConstant.SEMICOLON));
 		

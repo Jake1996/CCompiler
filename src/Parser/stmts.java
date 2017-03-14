@@ -1,18 +1,17 @@
 package Parser;
 
 public class stmts extends Node{
-	public stmts() {
-		code="";
+	public stmts(Label l) {
+		code = "";
 		if(getCurrentToken()==null) {
 			return;
 		}
-		Label l1 = new Label();
-		stmt s = new stmt(l1);
-		code+=s.code+l1+" :";
+		stmt s = new stmt(l);
+		code += s.code;
 		if(getCurrentToken()==null) {
 			return;
 		}
-		code += new stmts().code;
+		code += new stmts(l).code;
 		
 	}
 }
