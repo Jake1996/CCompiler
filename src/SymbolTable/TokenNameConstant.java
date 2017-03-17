@@ -10,7 +10,7 @@ public class TokenNameConstant {
 	public static final int REALNUMBER = 6;
 	public static final int STRINGLITERAL = 7;
 	public static final int CHARACTERLITERAL = 8;
-	public static final int SEMICOLON = 9;
+	public static final int TYPE = 9;
 	
 	//KEYWORDS
 	public static final int WHILE = 101;
@@ -19,14 +19,17 @@ public class TokenNameConstant {
 	public static final int BREAK = 104;
 	public static final int CONTINUE = 105;
 	public static final int RETURN = 106;
-	public static final int INT = 107;
-	public static final int FLOAT = 108;
-	public static final int DOUBLE = 109;
-	public static final int CHAR = 110;
-	public static final int ARRAYINT = 111;
-	public static final int ARRAYFLOAT = 112;
-	public static final int ARRAYDOUBLE = 113;
-	public static final int ARRAYCHAR = 114;
+	public static final int SEMICOLON = 107;
+	
+	//types
+	public static final int INT = 907;
+	public static final int FLOAT = 908;
+	public static final int DOUBLE = 909;
+	public static final int CHAR = 910;
+	public static final int ARRAYINT = 911;
+	public static final int ARRAYFLOAT = 912;
+	public static final int ARRAYDOUBLE = 913;
+	public static final int ARRAYCHAR = 914;
 	
 	//BRACKETS
 	public static final int OPENFLOWER = 201;
