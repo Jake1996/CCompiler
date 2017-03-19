@@ -12,6 +12,5 @@ public class stmts extends Node{
 			return;
 		}
 		code += new stmts(l).code;
-		
 	}
 }

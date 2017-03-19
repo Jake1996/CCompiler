@@ -22,7 +22,8 @@ public class stmt extends Node{
 			//bool
 			consumeToken(TokenNameConstant.CLOSEPARAN);
 			stmt s = new stmt(l2); //fix problem of wrong break over here
-			/* this.code = bool.code;
+			this.code = l1+" :\n";
+			/* this.code += bool.code;
 			 * this.code += "cmp "+bool.value+",#0";
 			 * this.code += "ontrue goto"+l2;
 			 */
@@ -53,10 +54,8 @@ public class stmt extends Node{
 		break;
 		case TokenNameConstant.OPENFLOWER : {
 			consumeToken(TokenNameConstant.OPENFLOWER);
-			getCurrentToken();
 			stmts s = new stmts(null);
 			consumeToken(TokenNameConstant.CLOSEFLOWER);
-			getCurrentToken();
 			this.code = s.code+"\n";
 		}
 		break;
