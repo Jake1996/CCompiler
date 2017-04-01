@@ -26,10 +26,8 @@ public class TokenNameConstant {
 	public static final int FLOAT = 908;
 	public static final int DOUBLE = 909;
 	public static final int CHAR = 910;
-	public static final int ARRAYINT = 911;
-	public static final int ARRAYFLOAT = 912;
-	public static final int ARRAYDOUBLE = 913;
-	public static final int ARRAYCHAR = 914;
+	public static final int LONG = 911;
+	public static final int ARRAY = 912;
 	
 	//BRACKETS
 	public static final int OPENFLOWER = 201;

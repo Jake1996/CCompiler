@@ -6,6 +6,10 @@ public class Word extends Token {
 		super(TokenNameConstant.IDENTIFIER);
 		lexeme=s;
 	}
+	public Word(String s, int tag) {
+		super(tag);
+		lexeme=s;		
+	}
 	public String getLexeme() {
 		return lexeme;
 	}
