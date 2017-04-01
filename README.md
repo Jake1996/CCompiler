@@ -21,6 +21,7 @@ stmtdash -> ;|= bool;
 
 type     -> int typedash| float typedash| char typedash| double typedash
 typedash -> [num]typedash | epsilon
+
 loc      -> id locdash
 locdash  -> [bool]locdash | epsilon
 
