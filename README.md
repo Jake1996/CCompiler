@@ -19,8 +19,8 @@ stmt     ->  while ( bool ) stmt
            | unary stmtdash;
 stmtdash -> ;|= bool;
 
-type     -> int| float| char | double
-
+type     -> int typedash| float typedash| char typedash| double typedash
+typedash -> [num]typedash | epsilon
 loc      -> id locdash
 locdash  -> [bool]locdash | epsilon
 
