@@ -60,7 +60,9 @@ public class stmt extends Node{
 		}
 		break;
 		case TokenNameConstant.TYPE : {
-			//type
+			type t = new type();
+			Token id = getCurrentToken();
+			
 			//loc
 		}
 		break;
