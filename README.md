@@ -15,7 +15,7 @@ stmt     ->  while ( bool ) stmt
            | break ;
            | continue ;
            | {stmts}
-           | type loc;
+           | type id;
            | unary stmtdash;
 stmtdash -> ;|= bool;
 

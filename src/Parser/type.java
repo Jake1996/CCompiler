@@ -8,29 +8,27 @@ public class type extends Node{
 	public Type type;
 	public type() {
 		Token k = getCurrentToken();
-		typedash td = new typedash();
-		if(td.array) {
-			
+		switch(k.tag) {
+		case TokenNameConstant.INT :
+			type = Type.INT;
+			break;
+		case TokenNameConstant.FLOAT :
+			type = Type.FLOAT;
+			break;
+		case TokenNameConstant.LONG :
+			type = Type.LONG;
+			break;
+		case TokenNameConstant.DOUBLE :
+			type = Type.DOUBLE;
+			break;
+		case TokenNameConstant.CHAR :
+			type = Type.CHAR;
+			break;
 		}
-		else {
-			switch(k.tag) {
-			case TokenNameConstant.INT :
-				type = type.INT;
-				break;
-			case TokenNameConstant.FLOAT :
-				type = type.FLOAT;
-				break;
-			case TokenNameConstant.LONG :
-				type = type.LONG;
-				break;
-			case TokenNameConstant.DOUBLE :
-				type = type.DOUBLE;
-				break;
-			case TokenNameConstant.CHAR :
-				type = type.CHAR;
-				break;
-			}
-			consumeToken(k.tag);
+		consumeToken(k.tag);
+		typedash td = new typedash(type);
+		if(td.array) {
+			type = td.t;
 		}
 	}
 }
