@@ -2,6 +2,7 @@ package SymbolTable;
 
 public class Word extends Token {
 	private String lexeme;
+	private Type type = null;
 	public Word(String s) {
 		super(TokenNameConstant.IDENTIFIER);
 		lexeme=s;
@@ -16,5 +17,11 @@ public class Word extends Token {
 	@Override
 	public String toString() {
 		return "< Identifier , " +lexeme+ " >";
+	}
+	public Type getType() {
+		return type;
+	}
+	public void setType(Type type) {
+		this.type = type;
 	}
 }

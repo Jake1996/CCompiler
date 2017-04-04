@@ -2,6 +2,7 @@ package Parser;
 
 import SymbolTable.Token;
 import SymbolTable.TokenNameConstant;
+import SymbolTable.Word;
 
 public class stmt extends Node{
 	public stmt(Label l) {
@@ -61,9 +62,8 @@ public class stmt extends Node{
 		break;
 		case TokenNameConstant.TYPE : {
 			type t = new type();
-			Token id = getCurrentToken();
-			
-			//loc
+			Word id = (Word)getCurrentToken();
+			id.setType(t.type);
 		}
 		break;
 		case TokenNameConstant.IDENTIFIER : {
