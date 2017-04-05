@@ -45,7 +45,7 @@ termdash -> * term | / term | epsilon
 
 factor   -> ( bool ) | num | real | true | false | unary
 
-unary    -> !unary | unarydash loc | loc unarydash
+unary    -> ++loc | --loc | loc unarydash
 unarydash-> ++ | -- | epsilon
 
 ```
