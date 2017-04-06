@@ -20,14 +20,12 @@ public class stmt extends Node{
 			tempe = end;
 			start = l1;
 			end = l2;
-			//bool
+			bool b = new bool();
 			consumeToken(TokenNameConstant.CLOSEPARAN);
 			stmt s = new stmt(l2); //fix problem of wrong break over here
 			this.code = l1+" :\n";
-			/* this.code += bool.code;
-			 * this.code += "cmp "+bool.value+",#0";
-			 * this.code += "ontrue goto"+l2;
-			 */
+			this.code += b.code;
+			this.code += "ifFalse "+ b.result +" goto "+l2;
 			this.code += s.code;
 			this.code += "goto "+l1+"\n";
 			this.code += l2+" :\n";
@@ -67,8 +65,16 @@ public class stmt extends Node{
 		}
 		break;
 		case TokenNameConstant.IDENTIFIER : {
-			//unary
-			//stmtdash
+			unary u = new unary();
+			Token t = getCurrentToken();
+			if(t.tag == TokenNameConstant.SEMICOLON) {
+				consumeToken(TokenNameConstant.SEMICOLON);
+				this.code = u.code;
+			}
+			else {
+				stmtdash sd = new stmtdash(u.result);
+				this.code = sd.code;
+			}
 		}
 		break;
 
