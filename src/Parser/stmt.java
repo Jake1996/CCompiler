@@ -62,6 +62,7 @@ public class stmt extends Node{
 			type t = new type();
 			Word id = (Word)getCurrentToken();
 			id.setType(t.type);
+			consumeToken(TokenNameConstant.IDENTIFIER);
 			consumeToken(TokenNameConstant.SEMICOLON);
 		}
 		break;

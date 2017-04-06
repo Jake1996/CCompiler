@@ -13,6 +13,7 @@ public class typedash extends Node {
 			array = true;
 			consumeToken(TokenNameConstant.OPENSQUARE);
 			int num = ((IntegerNumber)getCurrentToken()).getValue();
+			consumeToken(TokenNameConstant.INTEGERNUMBER);
 			consumeToken(TokenNameConstant.CLOSESQUARE);
 			typedash next = new typedash(basic);
 			if(next.array) {
