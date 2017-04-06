@@ -15,6 +15,7 @@ public class locdash extends bool {
 		Array a = (Array)t; 
 		consumeToken(TokenNameConstant.OPENSQUARE);
 		bool b = new bool();
+		b.init();
 		consumeToken(TokenNameConstant.CLOSESQUARE);
 		String ref1 = TemporaryGenerator.getTemporary();
 		String ref2 = TemporaryGenerator.getTemporary();
@@ -22,13 +23,13 @@ public class locdash extends bool {
 		if(ld.indirect) {
 			this.code = b.code;
 			this.code += ld.code;
-			this.code += ref1+" = "+ a.width +" * "+b.result;
-			this.code += ref2+" = "+ref1+" + " +ld.result;
+			this.code += ref1+" = "+ a.width +" * "+b.result+"\n";
+			this.code += ref2+" = "+ref1+" + " +ld.result+"\n";
 			this.result = ref2;
 		}
 		else {
 			this.code = b.code;
-			this.code += ref1+" = "+ a.width +" * "+b.result;
+			this.code += ref1+" = "+ a.width +" * "+b.result+"\n";
 			this.result = ref1;			
 		}
 		

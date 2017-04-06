@@ -9,9 +9,8 @@ import Parser.Parser;
 public class GCC {
 
 	public static void main(String[] args) {
-		//System.out.println("working");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String program;
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //		StringBuilder sb = new StringBuilder();
 //		String s;
 //		try {
@@ -23,7 +22,7 @@ public class GCC {
 //			
 //		}
 //		program = sb.toString();
-		program = "int a = 5;\nint b = 6;\nint[5][7] c;\na = b*c[1][2];";
+		program = "int a;\na=5;\nint b;\nb = 6;\nint[5][7] c;\na = b*c[1][2];";
 		Parser parse = new Parser(program);
 		System.out.println(parse.output);
 	}

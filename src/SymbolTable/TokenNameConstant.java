@@ -104,6 +104,6 @@ public class TokenNameConstant {
 		if(token==NOT)return "!"; 
 		if(token==AND)return "&&"; 
 		if(token==OR)return "||"; 
-		return "";
+		return ""+token;
 	}
 }

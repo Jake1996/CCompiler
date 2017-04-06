@@ -8,8 +8,7 @@ Our mini compiler will work on while loops in C.
 ```
 p        -> stmts
 
-stmts    -> stmt stmts
-           | epsilon
+stmts    -> stmt stmts | epsilon
 
 stmt     ->  while ( bool ) stmt
            | break ;

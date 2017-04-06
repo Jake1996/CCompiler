@@ -9,6 +9,10 @@ public class Array extends Type {
 		this.size = size;
 	}
 	public String toString() {
-		return parent+"[ "+size+" ]";
+		return "[ "+size+" ]"+parent;
+	}
+	@Override
+	public Type getType() {
+		return parent;
 	}
 }

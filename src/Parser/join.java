@@ -2,6 +2,7 @@ package Parser;
 
 public class join extends bool {
 	public join() {
+		super();
 		equality e = new equality();
 		equalitydash ed = new equalitydash(e.result);
 		this.code = e.code;

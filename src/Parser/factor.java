@@ -12,6 +12,7 @@ public class factor extends bool {
 		case TokenNameConstant.OPENPARAN : {
 			consumeToken(TokenNameConstant.OPENPARAN);
 			bool b =new  bool();
+			b.init();
 			this.code = b.code;
 			this.result = b.result;
 			consumeToken(TokenNameConstant.CLOSEPARAN);
@@ -20,14 +21,14 @@ public class factor extends bool {
 		case TokenNameConstant.INTEGERNUMBER : {
 			consumeToken(TokenNameConstant.INTEGERNUMBER);
 			String var = TemporaryGenerator.getTemporary();
-			this.code = var+" = "+((Number)t).getValue();
+			this.code = var+" = "+((Number)t).getValue()+"\n";
 			this.result = var;
 		}
 		break;
 		case TokenNameConstant.REALNUMBER : {
 			consumeToken(TokenNameConstant.REALNUMBER);
 			String var = TemporaryGenerator.getTemporary();
-			this.code = var+" = "+((RealNumber)t).getValue();
+			this.code = var+" = "+((RealNumber)t).getValue()+"\n";
 			this.result = var;
 		}
 		break;

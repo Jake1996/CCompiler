@@ -9,6 +9,7 @@ public class booldash extends bool {
 		if(t.tag == TokenNameConstant.OR) {
 			consumeToken(TokenNameConstant.OR);
 			bool b = new bool();
+			b.init();
 			String res = TemporaryGenerator.getTemporary();
 			this.result = res;
 			this.code = b.code;
