@@ -1,7 +1,7 @@
 package SymbolTable;
 
 public class Type extends Word {
-	int width=0;
+	public int width=0;
 	public static final Type
 	INT = new Type("int", TokenNameConstant.INT, 4),
 	FLOAT = new Type("float", TokenNameConstant.FLOAT, 4),
