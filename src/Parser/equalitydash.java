@@ -1,5 +1,5 @@
 package Parser;
 
-public class equalitydash extends Node {
+public class equalitydash extends bool {
 
 }

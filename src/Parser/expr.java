@@ -1,5 +1,5 @@
 package Parser;
 
-public class expr extends Node {
+public class expr extends bool {
 
 }

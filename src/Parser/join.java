@@ -1,5 +1,5 @@
 package Parser;
 
-public class join extends Node {
+public class join extends bool {
 
 }

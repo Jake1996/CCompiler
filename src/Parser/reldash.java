@@ -1,5 +1,5 @@
 package Parser;
 
-public class reldash extends Node {
+public class reldash extends bool {
 
 }

@@ -1,5 +1,5 @@
 package Parser;
 
-public class equality extends Node {
+public class equality extends bool {
 
 }
