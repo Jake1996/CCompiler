@@ -36,7 +36,7 @@ public class stmt extends Node{
 		break;
 		case TokenNameConstant.BREAK : {
 			if(end!=null)
-				this.code = "goto "+end;
+				this.code = "goto "+end+"\n";
 			else 
 				error();
 			consumeToken(TokenNameConstant.BREAK);
@@ -45,7 +45,7 @@ public class stmt extends Node{
 		break;
 		case TokenNameConstant.CONTINUE : {
 			if(start!=null)
-				this.code = "goto "+start;
+				this.code = "goto "+start+"\n";
 			else 
 				error();
 			consumeToken(TokenNameConstant.CONTINUE);

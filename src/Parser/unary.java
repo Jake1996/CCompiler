@@ -31,10 +31,10 @@ public class unary extends bool {
 			loc l = new loc();
 			this.code = l.code;
 			this.result = l.result;
-			if(getCurrentToken().tag==TokenNameConstant.DECREMENT||getCurrentToken().tag==TokenNameConstant.DECREMENT) {
+			if(getCurrentToken().tag==TokenNameConstant.DECREMENT||getCurrentToken().tag==TokenNameConstant.INCREMENT) {
 				String var = TemporaryGenerator.getTemporary();
 				this.result = var;
-				this.code = l.code +"\n";
+				this.code = l.code;
 				if(getCurrentToken().tag==TokenNameConstant.DECREMENT) {
 					this.code += var+" = "+l.result+" - 1\n";
 					consumeToken(TokenNameConstant.DECREMENT);

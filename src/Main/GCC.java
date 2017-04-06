@@ -26,5 +26,6 @@ public class GCC {
 		}
 		Parser parse = new Parser(program);
 		System.out.println(parse.output);
+		
 	}
 }

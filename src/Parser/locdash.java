@@ -32,6 +32,5 @@ public class locdash extends bool {
 			this.code += ref1+" = "+ a.getType().width +" * "+b.result+"\n";
 			this.result = ref1;			
 		}
-		
 	}
 }

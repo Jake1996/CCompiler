@@ -96,6 +96,9 @@ public class Lexer {
 					lexemeBegin++;
 					line++;
 				}
+				else if(arr[lexemeBegin]=='\t') { //ignore tabs
+					lexemeBegin++;
+				}
 				else {
 					break;
 				}
