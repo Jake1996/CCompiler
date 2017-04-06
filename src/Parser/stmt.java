@@ -1,5 +1,6 @@
 package Parser;
 
+import SymbolTable.StringLiteral;
 import SymbolTable.Table;
 import SymbolTable.Token;
 import SymbolTable.TokenNameConstant;
@@ -62,10 +63,27 @@ public class stmt extends Node{
 			this.code = s.code;
 		}
 		break;
+		case TokenNameConstant.PRINT : {
+			consumeToken(TokenNameConstant.PRINT);
+			consumeToken(TokenNameConstant.OPENPARAN);
+			StringLiteral st = (StringLiteral)getCurrentToken();
+			consumeToken(TokenNameConstant.STRINGLITERAL);
+			String t = TemporaryGenerator.getTemporary();
+			this.code = t+" = "+st.getValue()+"\n";
+			this.code += "param "+t+"\n";
+			this.code += "call printf,1\n";
+			consumeToken(TokenNameConstant.CLOSEPARAN);
+			consumeToken(TokenNameConstant.SEMICOLON);
+		}
+		break;
 		case TokenNameConstant.TYPE : {
 			type t = new type();
 			Word id = (Word)getCurrentToken();
+			if(id.getType()!=null) {
+				id = new Word(id.getLexeme());
+			}
 			id.setType(t.type);
+			Table.installId(id);
 			consumeToken(TokenNameConstant.IDENTIFIER);
 			consumeToken(TokenNameConstant.SEMICOLON);
 		}

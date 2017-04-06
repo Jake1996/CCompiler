@@ -6,6 +6,9 @@ public class StringLiteral extends Token{
 		super(TokenNameConstant.STRINGLITERAL);
 		value = val;
 	}
+	public String getValue() {
+		return value;
+	}
 	@Override
 	public String toString() {
 		return "< StringLiteral , " +value+ " >";

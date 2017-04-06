@@ -4,16 +4,25 @@ import java.util.HashMap;
 
 public class Table {
 	private static Container c = new Container();
-//	private static HashMap<String, Token> c.hm = new HashMap<String, Token>();
-	public static Token installId(String word) {
-		if(!c.hm.containsKey(word)) {
-			Word w = new Word(word);
-			c.hm.put(word, w);			
-		}
-		return c.hm.get(word);
+	private static HashMap<String, Token> hm = new HashMap<String, Token>();
+//	public static Token installId(String word) {
+//		if(!hm.containsKey(word)) {
+////			if(!c.hm.containsKey(word)) {
+//			if(c.search(word)==null) {
+//				Word w = new Word(word);
+//				c.hm.put(word, w);
+//			}
+//			return c.search(word);
+//		}
+//		else
+//			return hm.get(word);
+//	}
+	public static Token installId(Word word) {
+		c.hm.put(word.getLexeme(), word);
+		return word;
 	}
 	public static void installToken(String s,Token t) {
-		c.hm.put(s, t);
+		hm.put(s, t);
 	}
 	public static Token installNum(int num) {
 		if(!c.hm.containsKey(num+"")) {
@@ -44,7 +53,13 @@ public class Table {
 		return c.hm.get(ch+"");
 	}
 	public static Token getToken(String s) {
+		if(hm.containsKey(s))
+			return hm.get(s);
 		return c.search(s);
+	}
+	public static Token getReserved(String s) {
+		if(hm.containsKey(s)) return hm.get(s);
+		else return null;
 	}
 	public static void newscope() {
 		c = c.goIn();

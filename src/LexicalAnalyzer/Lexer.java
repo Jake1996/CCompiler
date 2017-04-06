@@ -32,6 +32,7 @@ public class Lexer {
 		Table.installToken("int", new Token(TokenNameConstant.INT));
 		Table.installToken("float", new Token(TokenNameConstant.FLOAT));
 		Table.installToken("double", new Token(TokenNameConstant.DOUBLE));
+		Table.installToken("long", new Token(TokenNameConstant.LONG));
 		Table.installToken("char", new Token(TokenNameConstant.CHAR));
 
 		//brackets
@@ -81,7 +82,7 @@ public class Lexer {
 					}
 					else if(arr[lexemeBegin]=='*') { //multi line comment
 						lexemeBegin++;
-						while(arr[lexemeBegin]!='*'&&arr[lexemeBegin+1]!='/') {
+						while(!(arr[lexemeBegin]=='*'&&arr[lexemeBegin+1]=='/')) {
 							if(arr[lexemeBegin]=='\n')
 								line++;
 							lexemeBegin++;
@@ -115,7 +116,14 @@ public class Lexer {
 				lexemeEnd++;
 			}
 			lexemeBegin = lexemeEnd;
-			return Table.installId(s.toString());
+			if(Table.getReserved(s.toString())!=null) {
+				return Table.getReserved(s.toString());
+			}
+			if(Table.getToken(s.toString())!=null) {
+				return Table.getToken(s.toString());
+			}
+			return new Word(s.toString());
+			//return Table.installId(s.toString());
 		}
 		else if(Character.isDigit(arr[lexemeBegin])) { //number
 			StringBuilder s = new StringBuilder();

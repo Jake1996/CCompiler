@@ -25,9 +25,9 @@ public class Container {
 				cur = cur.in;
 			}
 		}
-		if(ret==null) {
-			System.out.println("Error : Undefined");
-		}
+//		if(ret==null) {
+//			System.out.println("Error "+s+": Undefined");
+//		}
 		return ret;
 	}
 }
