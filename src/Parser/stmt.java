@@ -1,5 +1,6 @@
 package Parser;
 
+import SymbolTable.Table;
 import SymbolTable.Token;
 import SymbolTable.TokenNameConstant;
 import SymbolTable.Word;
@@ -54,8 +55,10 @@ public class stmt extends Node{
 		break;
 		case TokenNameConstant.OPENFLOWER : {
 			consumeToken(TokenNameConstant.OPENFLOWER);
+			Table.newscope();
 			stmts s = new stmts(null);
 			consumeToken(TokenNameConstant.CLOSEFLOWER);
+			Table.oldscope();
 			this.code = s.code;
 		}
 		break;

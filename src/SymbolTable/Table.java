@@ -46,4 +46,10 @@ public class Table {
 	public static Token getToken(String s) {
 		return c.search(s);
 	}
+	public static void newscope() {
+		c = c.goIn();
+	}
+	public static void oldscope() {
+		c = c.getOut();
+	}
 }
