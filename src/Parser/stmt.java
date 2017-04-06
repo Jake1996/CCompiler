@@ -21,11 +21,12 @@ public class stmt extends Node{
 			start = l1;
 			end = l2;
 			bool b = new bool();
+			b.init();
 			consumeToken(TokenNameConstant.CLOSEPARAN);
-			stmt s = new stmt(l2); //fix problem of wrong break over here
+			stmt s = new stmt(l2);
 			this.code = l1+" :\n";
 			this.code += b.code;
-			this.code += "ifFalse "+ b.result +" goto "+l2;
+			this.code += "ifFalse "+ b.result +" goto "+l2+"\n";
 			this.code += s.code;
 			this.code += "goto "+l1+"\n";
 			this.code += l2+" :\n";
@@ -55,7 +56,7 @@ public class stmt extends Node{
 			consumeToken(TokenNameConstant.OPENFLOWER);
 			stmts s = new stmts(null);
 			consumeToken(TokenNameConstant.CLOSEFLOWER);
-			this.code = s.code+"\n";
+			this.code = s.code;
 		}
 		break;
 		case TokenNameConstant.TYPE : {

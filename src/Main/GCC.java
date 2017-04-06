@@ -10,8 +10,8 @@ public class GCC {
 
 	public static void main(String[] args) {
 		String program;
-		program = "int a;\na=5;\nint b;\nb = 6;\nint[5][7] c;\na = b*c[1][2];";
 		BufferedReader br;
+		program = "while(5==4)\n{\n}";
 		try {
 			br = new BufferedReader(new FileReader(new File("/home/jake/Documents/workspace/CCompiler/input.c")));
 			StringBuilder sb = new StringBuilder();
