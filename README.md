@@ -66,8 +66,3 @@ unary    -> ++loc | --loc | loc unarydash
 unarydash-> ++ | -- | epsilon
 
 ```
-
-PROJECT BY :
-Imran Ahmed Manzoor - 01FB14ECS085
-Jainam M - 01FB14ECS086
-Jatin PM - 01FB14ECS087
