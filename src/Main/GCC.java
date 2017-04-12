@@ -18,6 +18,7 @@ public class GCC {
 			String s;
 			while((s = br.readLine())!=null) {
 				sb.append(s);
+				sb.append('\n');
 			}
 			br.close();
 			program = sb.toString();
